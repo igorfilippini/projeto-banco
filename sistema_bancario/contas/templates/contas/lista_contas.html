@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Contas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .titulo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .tabela {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .tabela th, .tabela td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .tabela th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="titulo">Lista de Contas</h2>
+        <table class="tabela">
+            <tr>
+                <th>Número</th>
+                <th>Cliente</th>
+                <th>Saldo</th>
+            </tr>
+            {% for conta in contas %}
+                <tr>
+                    <td>{{ conta.numero }}</td>
+                    <td>{{ conta.nome_cliente }}</td>
+                    <td>{{ conta.saldo }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
