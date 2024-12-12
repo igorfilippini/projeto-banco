@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Contas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Contas Bancárias</h1>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Número da Conta</th>
+            <th>Saldo</th>
+            <th>Ações</th>
+        </tr>
+        {% for conta in contas %}
+        <tr>
+            <td>{{ conta.nome }}</td>
+            <td>{{ conta.numero_conta }}</td>
+            <td>{{ conta.saldo }}</td>
+            <td>
+                <a href="{% url 'consultar_saldo' conta.numero_conta %}">Consultar Saldo</a>
+                <a href="{% url 'depositar' conta.numero_conta %}">Depositar</a>
+                <a href="{% url 'sacar' conta.numero_conta %}">Sacar</a>
+                <a href="{% url 'encerrar_conta' conta.numero_conta %}">Encerrar Conta</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a class="btn" href="{% url 'criar_conta' %}">Criar Nova Conta</a>
+</body>
+</html>
